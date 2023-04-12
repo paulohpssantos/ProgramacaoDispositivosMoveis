@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Meu primeiro App</string>
+    <string name="salvar_label">Gravar</string>
+</resources>
