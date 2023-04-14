@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
     private void salvarAluno(){
@@ -57,6 +58,14 @@ public class MainActivity extends AppCompatActivity {
                     edRa.setError("Informe o ra!");
                 }
             }
+
+            //Para enconder os campo da tela
+            edNome.setVisibility(View.GONE);
+            edRa.setVisibility(View.GONE);
+
+            //Para exibir os campos 
+            edNome.setVisibility(View.VISIBLE);
+            edRa.setVisibility(View.VISIBLE);
 
         }catch (Exception ex){
             Log.e("ERRO", ex.getMessage());
