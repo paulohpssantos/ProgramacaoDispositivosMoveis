@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
             edNome.setVisibility(View.GONE);
             edRa.setVisibility(View.GONE);
 
-            //Para exibir os campos 
+            //Para exibir os campos
             edNome.setVisibility(View.VISIBLE);
             edRa.setVisibility(View.VISIBLE);
 

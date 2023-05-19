@@ -3,6 +3,7 @@ package com.example.model;
 public class Aluno {
     private int ra;
     private String nome;
+    private String cidade;
 
     public Aluno() {
     }
@@ -21,5 +22,13 @@ public class Aluno {
 
     public void setNome(String nome) {
         this.nome = nome;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 }
