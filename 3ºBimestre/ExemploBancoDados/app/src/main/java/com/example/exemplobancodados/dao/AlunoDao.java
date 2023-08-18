@@ -2,6 +2,7 @@ package com.example.exemplobancodados.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -67,7 +68,7 @@ public class AlunoDao implements GenericDao<Aluno>{
             return bd.insert(tableName, null, valores);
 
         }catch (SQLException ex){
-            Log.e("insert", ex.getMessage());
+            Log.e("ERRO", "AlunoDao.insert(): "+ex.getMessage());
         }
         return -1;
     }
@@ -87,23 +88,67 @@ public class AlunoDao implements GenericDao<Aluno>{
             return bd.update(tableName, valores, "RA = ?", identificador);
 
         }catch (SQLException ex){
-            Log.e("update", ex.getMessage());
+            Log.e("ERRO", "AlunoDao.update(): "+ex.getMessage());
         }
         return -1;
     }
 
     @Override
     public long delete(Aluno obj) {
-        return 0;
+        try{
+            String[]identificador = {String.valueOf(obj.getRaAluno())};
+            return bd.delete(tableName, "RA = ?", identificador);
+
+        }catch (SQLException ex){
+            Log.e("ERRO", "AlunoDao.delete(): "+ex.getMessage());
+        }
+        return -1;
     }
 
     @Override
     public ArrayList<Aluno> getAll() {
-        return null;
+        ArrayList<Aluno> lista = new ArrayList<>();
+
+        try{
+            Cursor cursor = bd.query(tableName, colunas,
+                    null, null,
+                    null, null, "RA");
+            if(cursor.moveToFirst()){
+                do{
+                    Aluno aluno = new Aluno();
+                    aluno.setRaAluno(cursor.getInt(0));
+                    aluno.setNomeAluno(cursor.getString(1));
+
+                    lista.add(aluno);
+                }while(cursor.moveToNext());
+            }
+        }catch (SQLException ex){
+            Log.e("ERRO", "AlunoDao.getAll(): "+ex.getMessage());
+        }
+
+        return lista;
     }
 
     @Override
     public Aluno getById(int id) {
+        try{
+            String[]identificador = {String.valueOf(id)};
+
+            Cursor cursor = bd.query(tableName, colunas,
+                    "RA = ?", identificador, null,
+                    null, null);
+
+            if(cursor.moveToFirst()){
+                Aluno aluno = new Aluno();
+                aluno.setRaAluno(cursor.getInt(0));
+                aluno.setNomeAluno(cursor.getString(1));
+
+                return aluno;
+            }
+
+        }catch (SQLException ex){
+            Log.e("ERRO", "AlunoDao.getAll(): "+ex.getMessage());
+        }
         return null;
     }
 }
