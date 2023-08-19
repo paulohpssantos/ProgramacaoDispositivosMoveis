@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.exemplobancodados.dao.AlunoDao;
 import com.example.exemplobancodados.model.Aluno;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 public class AlunoController {
@@ -15,15 +16,18 @@ public class AlunoController {
         this.context = context;
     }
 
-    public long salvarAluno(Aluno aluno){
+    public long salvarAluno(String ra, String nome){
+        Aluno aluno = new Aluno(Integer.parseInt(ra), nome);
         return AlunoDao.getInstancia(context).insert(aluno);
     }
 
-    public long atualizarAluno(Aluno aluno){
+    public long atualizarAluno(String ra, String nome){
+        Aluno aluno = new Aluno(Integer.parseInt(ra), nome);
         return AlunoDao.getInstancia(context).update(aluno);
     }
 
-    public long apagarAluno(Aluno aluno){
+    public long apagarAluno(String ra, String nome){
+        Aluno aluno = new Aluno(Integer.parseInt(ra), nome);
         return AlunoDao.getInstancia(context).delete(aluno);
     }
 
@@ -35,15 +39,22 @@ public class AlunoController {
         return AlunoDao.getInstancia(context).getById(ra);
     }
 
-    public String validaAluno(Aluno aluno){
+    public String validaAluno(String ra, String nome){
         String mensagem = "";
-        if(aluno.getRaAluno() <= 0){
+        if(ra == null || ra.isEmpty()){
             mensagem += "Ra do aluno deve ser preenchido!!\n";
+        }else{
+            try{
+                if(Integer.parseInt(ra) <= 0){
+                    mensagem += "Ra do aluno deve ser maior que zero!!\n";
+                }
+            }catch (NumberFormatException ex){
+                mensagem += "Ra do aluno deve ser número válido!!\n";
+            }
         }
-        if(aluno.getNomeAluno() == null || aluno.getNomeAluno().isEmpty()){
+        if(nome == null || nome.isEmpty()){
             mensagem += "Nome do aluno deve ser preenchido!!";
         }
-
         return mensagem;
     }
 
