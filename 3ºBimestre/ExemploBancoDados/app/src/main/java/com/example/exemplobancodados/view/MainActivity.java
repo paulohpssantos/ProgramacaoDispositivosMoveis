@@ -2,6 +2,7 @@ package com.example.exemplobancodados.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,27 +16,41 @@ public class MainActivity extends AppCompatActivity {
 
     private EditText edRaAluno;
     private EditText edNomeAluno;
-    private Button btSalvar;
+    private Button btCadastroAluno;
     private AlunoController alunoController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setTitle("Cadastro Aluno");
 
-        edRaAluno = findViewById(R.id.edRaAluno);
-        edNomeAluno = findViewById(R.id.edNomeAluno);
-        btSalvar = findViewById(R.id.btSalvar);
-
-        alunoController = new AlunoController(this);
-
-        btSalvar.setOnClickListener(new View.OnClickListener() {
+        btCadastroAluno = findViewById(R.id.btCadastroAluno);
+        btCadastroAluno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                salvarAluno();
+                abrirActivity();
             }
         });
+
+//        edRaAluno = findViewById(R.id.edRaAluno);
+//        edNomeAluno = findViewById(R.id.edNomeAluno);
+//        btSalvar = findViewById(R.id.btSalvar);
+
+//        alunoController = new AlunoController(this);
+//
+//        btSalvar.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                salvarAluno();
+//            }
+//        });
+    }
+
+    public void abrirActivity(){
+        Intent intent = new Intent(MainActivity.this,
+                ListaAlunoActivity.class);
+
+        startActivity(intent);
     }
 
     private void salvarAluno() {
