@@ -2,11 +2,14 @@ package com.example.exemplobancodados.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.constraintlayout.motion.widget.OnSwipe;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.exemplobancodados.R;
@@ -41,6 +44,7 @@ public class AlunoListAdapter extends
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvRaAluno.setText(String.valueOf(listaAlunos.get(position).getRaAluno()));
         holder.tvNomeAluno.setText(listaAlunos.get(position).getNomeAluno());
+
     }
 
     @Override
