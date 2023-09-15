@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.example.exemplobancodados.R;
 import com.example.exemplobancodados.adapter.AlunoListAdapter;
@@ -28,6 +30,12 @@ public class ListaAlunoActivity extends AppCompatActivity {
         controller = new AlunoController(this);
         rvAlunos = findViewById(R.id.rvAlunos);
         btNovoAluno = findViewById(R.id.btNovoAluno);
+        btNovoAluno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                abrirCadastroAluno();
+            }
+        });
 
         atualizarListaAlunos();
     }
@@ -37,5 +45,13 @@ public class ListaAlunoActivity extends AppCompatActivity {
         AlunoListAdapter adapter = new AlunoListAdapter(listaAlunos, this);
         rvAlunos.setLayoutManager(new LinearLayoutManager(this));
         rvAlunos.setAdapter(adapter);
+    }
+
+    private void abrirCadastroAluno(){
+        Intent intent = new Intent(
+                ListaAlunoActivity.this,
+                CadastroAlunoActivity.class);
+
+        startActivity(intent);
     }
 }
