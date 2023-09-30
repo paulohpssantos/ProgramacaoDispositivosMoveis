@@ -6,6 +6,13 @@
         android:id="@+id/mnSalvar"
         android:icon="@drawable/ic_check"
         android:title="Salvar"
-        app:showAsAction="always"/>
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/mnCancelar"
+        android:icon="@drawable/ic_aluno"
+        android:title="Cancelar"
+        app:showAsAction="never"/>
+
 
 </menu>

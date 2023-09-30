@@ -40,6 +40,10 @@ public class ListaAlunoActivity extends AppCompatActivity {
         atualizarListaAlunos();
     }
 
+    /**
+     * Gera a lista de alunos para atribuir no RecyclerView
+     * e ser exibido na tela
+     */
     private void atualizarListaAlunos() {
         ArrayList<Aluno> listaAlunos = controller.retornarTodosAlunos();
         AlunoListAdapter adapter = new AlunoListAdapter(listaAlunos, this);
@@ -47,6 +51,9 @@ public class ListaAlunoActivity extends AppCompatActivity {
         rvAlunos.setAdapter(adapter);
     }
 
+    /**
+     * Abre a tela de cadastro do aluno
+     */
     private void abrirCadastroAluno(){
         Intent intent = new Intent(
                 ListaAlunoActivity.this,
