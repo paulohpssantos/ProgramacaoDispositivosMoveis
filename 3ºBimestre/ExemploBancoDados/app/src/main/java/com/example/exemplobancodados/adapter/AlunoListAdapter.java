@@ -23,6 +23,11 @@ public class AlunoListAdapter extends
     private ArrayList<Aluno> listaAlunos;
     private Context context;
 
+    /**
+     * Construtor da classe
+     * @param listaAlunos: REcebe a lista de dados que será exibida
+     * @param context: qual activity exibira a lista
+     */
     public AlunoListAdapter(ArrayList<Aluno> listaAlunos, Context context) {
         this.listaAlunos = listaAlunos;
         this.context = context;
@@ -40,6 +45,7 @@ public class AlunoListAdapter extends
         return new ViewHolder(listItem);
     }
 
+    /**Método que adiciona dados nos campos da tela**/
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         holder.tvRaAluno.setText(String.valueOf(listaAlunos.get(position).getRaAluno()));
@@ -47,11 +53,13 @@ public class AlunoListAdapter extends
 
     }
 
+    /**Retorna a quantidade de dados existente na lista**/
     @Override
     public int getItemCount() {
         return this.listaAlunos.size();
     }
 
+    /**Classe que vincula o componente do xml para ser manipulado**/
     public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView tvRaAluno;
