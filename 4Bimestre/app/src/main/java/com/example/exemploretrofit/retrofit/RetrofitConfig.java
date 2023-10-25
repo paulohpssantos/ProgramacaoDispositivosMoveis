@@ -1,5 +1,7 @@
 package com.example.exemploretrofit.retrofit;
 
+import com.example.exemploretrofit.service.IBGEService;
+
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
@@ -21,4 +23,7 @@ public class RetrofitConfig {
                 .build();
     }
 
+    public IBGEService ibgeService(){
+        return this.retrofit.create(IBGEService.class);
+    }
 }

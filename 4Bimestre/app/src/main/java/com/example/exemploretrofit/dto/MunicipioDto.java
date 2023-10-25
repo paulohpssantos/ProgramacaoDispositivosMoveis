@@ -14,4 +14,5 @@ public class MunicipioDto {
     public void setDados(ArrayList<DadosMunicipio> dados) {
         this.dados = dados;
     }
+
 }
