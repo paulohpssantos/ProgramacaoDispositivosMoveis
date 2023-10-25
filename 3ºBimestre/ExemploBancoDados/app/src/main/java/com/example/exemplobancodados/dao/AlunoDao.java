@@ -48,7 +48,8 @@ public class AlunoDao implements GenericDao<Aluno>{
     private AlunoDao(Context context) {
         this.context = context;
         //Carregando base de dados
-        openHelper = new SQLiteDataHelper(this.context, "UNIPAR", null, 1);
+        openHelper = new SQLiteDataHelper(this.context, "UNIPAR",
+                null, 1);
 
         //Atribuindo a base de dados a variavel, e dando permissão para escrever nas tabelas
         bd = openHelper.getWritableDatabase();
